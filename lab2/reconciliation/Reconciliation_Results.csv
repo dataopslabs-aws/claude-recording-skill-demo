@@ -1,0 +1,89 @@
+match_key,field,form_value,dynamodb_value,status,note
+raj.sharma1@email.com,Email,raj.sharma1@email.com,raj.sharma1@email.com,MATCH,
+raj.sharma1@email.com,First Name,Raj,Raj,MATCH,
+raj.sharma1@email.com,Last Name,Sharma,Sharma,MATCH,
+raj.sharma1@email.com,Email ID,raj.sharma1@email.com,raj.sharma1@email.com,MATCH,
+raj.sharma1@email.com,Phone Number,9988116965,9988116965,MATCH,
+raj.sharma1@email.com,Preferred Food,Gluten-Free,Gluten-Free,MATCH,
+raj.sharma1@email.com,T-Shirt Size,S,S,MATCH,
+raj.sharma1@email.com,Event Attendance Time,1:00 PM - 4:00 PM,1:00 PM - 4:00 PM,MATCH,
+priya.patel2@email.com,Email,priya.patel2@email.com,priya.patel2@email.com,MATCH,
+priya.patel2@email.com,First Name,Priya,Priya,MATCH,
+priya.patel2@email.com,Last Name,Patel,Patel,MATCH,
+priya.patel2@email.com,Email ID,priya.patel2@email.com,priya.patel2@email.com,MATCH,
+priya.patel2@email.com,Phone Number,9728145240,9728145240,MATCH,
+priya.patel2@email.com,Preferred Food,Gluten-Free,Gluten-Free,MATCH,
+priya.patel2@email.com,T-Shirt Size,S,S,MATCH,
+priya.patel2@email.com,Event Attendance Time,8:00 AM - 12:00 PM,8:00 AM - 12:00 PM,MATCH,
+amit.kumar3@email.com,Email,amit.kumar3@email.com,amit.kumar3@email.com,MATCH,
+amit.kumar3@email.com,First Name,Amit,Amit,MATCH,
+amit.kumar3@email.com,Last Name,Kumar,Kumar,MATCH,
+amit.kumar3@email.com,Email ID,amit.kumar3@email.com,amit.kumar3@email.com,MATCH,
+amit.kumar3@email.com,Phone Number,9829197087,9829197087,MATCH,
+amit.kumar3@email.com,Preferred Food,Vegan,Vegan,MATCH,
+amit.kumar3@email.com,T-Shirt Size,S,S,MATCH,
+amit.kumar3@email.com,Event Attendance Time,1:00 PM - 4:00 PM,1:00 PM - 4:00 PM,MATCH,
+sneha.singh4@email.com,Email,sneha.singh4@email.com,sneha.singh4@email.com,MATCH,
+sneha.singh4@email.com,First Name,Sneha,Sneha,MATCH,
+sneha.singh4@email.com,Last Name,Singh,Singh,MATCH,
+sneha.singh4@email.com,Email ID,sneha.singh4@email.com,sneha.singh4@email.com,MATCH,
+sneha.singh4@email.com,Phone Number,9774752463,9774752463,MATCH,
+sneha.singh4@email.com,Preferred Food,Vegetarian,Vegetarian,MATCH,
+sneha.singh4@email.com,T-Shirt Size,XS,XS,MATCH,
+sneha.singh4@email.com,Event Attendance Time,1:00 PM - 4:00 PM,1:00 PM - 4:00 PM,MATCH,
+vikram.gupta5@email.com,Email,vikram.gupta5@email.com,,NOT_IN_DDB,no DynamoDB item for Email
+vikram.gupta5@email.com,First Name,Vikram,,NOT_IN_DDB,no DynamoDB item for Email
+vikram.gupta5@email.com,Last Name,Gupta,,NOT_IN_DDB,no DynamoDB item for Email
+vikram.gupta5@email.com,Email ID,vikram.gupta5@email.com,,NOT_IN_DDB,no DynamoDB item for Email
+vikram.gupta5@email.com,Phone Number,9879330378,,NOT_IN_DDB,no DynamoDB item for Email
+vikram.gupta5@email.com,Preferred Food,Gluten-Free,,NOT_IN_DDB,no DynamoDB item for Email
+vikram.gupta5@email.com,T-Shirt Size,M,,NOT_IN_DDB,no DynamoDB item for Email
+vikram.gupta5@email.com,Event Attendance Time,8:00 AM - 12:00 PM,,NOT_IN_DDB,no DynamoDB item for Email
+anjali.reddy6@email.com,Email,anjali.reddy6@email.com,,NOT_IN_DDB,no DynamoDB item for Email
+anjali.reddy6@email.com,First Name,Anjali,,NOT_IN_DDB,no DynamoDB item for Email
+anjali.reddy6@email.com,Last Name,Reddy,,NOT_IN_DDB,no DynamoDB item for Email
+anjali.reddy6@email.com,Email ID,anjali.reddy6@email.com,,NOT_IN_DDB,no DynamoDB item for Email
+anjali.reddy6@email.com,Phone Number,9874229725,,NOT_IN_DDB,no DynamoDB item for Email
+anjali.reddy6@email.com,Preferred Food,Vegetarian,,NOT_IN_DDB,no DynamoDB item for Email
+anjali.reddy6@email.com,T-Shirt Size,XS,,NOT_IN_DDB,no DynamoDB item for Email
+anjali.reddy6@email.com,Event Attendance Time,8:00 AM - 12:00 PM,,NOT_IN_DDB,no DynamoDB item for Email
+rahul.nair7@email.com,Email,rahul.nair7@email.com,rahul.nair7@email.com,MATCH,
+rahul.nair7@email.com,First Name,Rahul,Rahul,MATCH,
+rahul.nair7@email.com,Last Name,Nair,Nair,MATCH,
+rahul.nair7@email.com,Email ID,rahul.nair7@email.com,rahul.nair7@email.com,MATCH,
+rahul.nair7@email.com,Phone Number,9915507238,9915507238,MATCH,
+rahul.nair7@email.com,Preferred Food,Vegan,Vegan,MATCH,
+rahul.nair7@email.com,T-Shirt Size,S,S,MATCH,
+rahul.nair7@email.com,Event Attendance Time,1:00 PM - 4:00 PM,1:00 PM - 4:00 PM,MATCH,
+arjun.chopra9@email.com,Email,arjun.chopra9@email.com,arjun.chopra9@email.com,MATCH,
+arjun.chopra9@email.com,First Name,Arjun,Arjun,MATCH,
+arjun.chopra9@email.com,Last Name,Chopra,Chopra,MATCH,
+arjun.chopra9@email.com,Email ID,arjun.chopra9@email.com,arjun.chopra9@email.com,MATCH,
+arjun.chopra9@email.com,Phone Number,9839287490,9839287490,MATCH,
+arjun.chopra9@email.com,Preferred Food,Vegan,Vegan,MATCH,
+arjun.chopra9@email.com,T-Shirt Size,XS,XS,MATCH,
+arjun.chopra9@email.com,Event Attendance Time,8:00 AM - 12:00 PM,8:00 AM - 12:00 PM,MATCH,
+neha.verma10@email.com,Email,neha.verma10@email.com,neha.verma10@email.com,MATCH,
+neha.verma10@email.com,First Name,Neha,Neha,MATCH,
+neha.verma10@email.com,Last Name,Verma,Verma,MATCH,
+neha.verma10@email.com,Email ID,neha.verma10@email.com,neha.verma10@email.com,MATCH,
+neha.verma10@email.com,Phone Number,9983209871,9983209871,MATCH,
+neha.verma10@email.com,Preferred Food,Vegetarian,Vegetarian,MATCH,
+neha.verma10@email.com,T-Shirt Size,S,S,MATCH,
+neha.verma10@email.com,Event Attendance Time,1:00 PM - 4:00 PM,1:00 PM - 4:00 PM,MATCH,
+rohan.jain11@email.com,Email,rohan.jain11@email.com,rohan.jain11@email.com,MATCH,
+rohan.jain11@email.com,First Name,Rohan,Rohan,MATCH,
+rohan.jain11@email.com,Last Name,Jain,Jain,MATCH,
+rohan.jain11@email.com,Email ID,rohan.jain11@email.com,rohan.jain11@email.com,MATCH,
+rohan.jain11@email.com,Phone Number,9949183823,9949183823,MATCH,
+rohan.jain11@email.com,Preferred Food,Vegan,Vegan,MATCH,
+rohan.jain11@email.com,T-Shirt Size,M,M,MATCH,
+rohan.jain11@email.com,Event Attendance Time,8:00 AM - 12:00 PM,8:00 AM - 12:00 PM,MATCH,
+ananya.bhat12@email.com,Email,ananya.bhat12@email.com,ananya.bhat12@email.com,MATCH,
+ananya.bhat12@email.com,First Name,Ananya,Ananya,MATCH,
+ananya.bhat12@email.com,Last Name,Bhat,Bhat,MATCH,
+ananya.bhat12@email.com,Email ID,ananya.bhat12@email.com,ananya.bhat12@email.com,MATCH,
+ananya.bhat12@email.com,Phone Number,9790498636,9790498636,MATCH,
+ananya.bhat12@email.com,Preferred Food,Vegan,Vegan,MATCH,
+ananya.bhat12@email.com,T-Shirt Size,M,M,MATCH,
+ananya.bhat12@email.com,Event Attendance Time,1:00 PM - 4:00 PM,1:00 PM - 4:00 PM,MATCH,

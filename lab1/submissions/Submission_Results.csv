@@ -1,0 +1,26 @@
+row,email,first_name,last_name,phone,preferred_food,tshirt_size,attendance_time,status
+1,raj.sharma1@email.com,Raj,Sharma,9988116965,Gluten-Free,S,1:00 PM - 4:00 PM,recorded
+2,priya.patel2@email.com,Priya,Patel,9728145240,Gluten-Free,S,8:00 AM - 12:00 PM,recorded
+3,amit.kumar3@email.com,Amit,Kumar,9829197087,Vegan,S,1:00 PM - 4:00 PM,recorded
+4,sneha.singh4@email.com,Sneha,Singh,9774752463,Vegetarian,XS,1:00 PM - 4:00 PM,recorded
+5,vikram.gupta5@email.com,Vikram,Gupta,9879330378,Gluten-Free,M,8:00 AM - 12:00 PM,recorded
+6,anjali.reddy6@email.com,Anjali,Reddy,9874229725,Vegetarian,XS,8:00 AM - 12:00 PM,recorded
+7,rahul.nair7@email.com,Rahul,Nair,9915507238,Vegan,S,1:00 PM - 4:00 PM,recorded
+8,divya.iyer8@email.com,Divya,Iyer,9937746161,Vegan,L,8:00 AM - 12:00 PM,recorded
+9,arjun.chopra9@email.com,Arjun,Chopra,9839287490,Vegan,XS,8:00 AM - 12:00 PM,recorded
+10,neha.verma10@email.com,Neha,Verma,9983209871,Vegetarian,S,1:00 PM - 4:00 PM,recorded
+11,rohan.jain11@email.com,Rohan,Jain,9949183823,Vegan,M,8:00 AM - 12:00 PM,recorded
+12,ananya.bhat12@email.com,Ananya,Bhat,9790498636,Vegan,M,1:00 PM - 4:00 PM,recorded
+13,sanjay.rao13@email.com,Sanjay,Rao,9771878653,Vegan,XS,1:00 PM - 4:00 PM,recorded
+14,pooja.pandey14@email.com,Pooja,Pandey,9906260246,Non-Vegetarian,S,1:00 PM - 4:00 PM,recorded
+15,karan.desai15@email.com,Karan,Desai,9973602529,Non-Vegetarian,S,1:00 PM - 4:00 PM,recorded
+16,isha.bansal16@email.com,Isha,Bansal,9837235536,Non-Vegetarian,M,8:00 AM - 12:00 PM,recorded
+17,nikhil.saxena17@email.com,Nikhil,Saxena,9716919992,Non-Vegetarian,L,1:00 PM - 4:00 PM,recorded
+18,sakshi.pillai18@email.com,Sakshi,Pillai,9816677222,Non-Vegetarian,XS,1:00 PM - 4:00 PM,recorded
+19,arun.menon19@email.com,Arun,Menon,9842561259,Non-Vegetarian,XL,8:00 AM - 12:00 PM,recorded
+20,mira.mishra20@email.com,Mira,Mishra,9882681157,Non-Vegetarian,XXL,8:00 AM - 12:00 PM,recorded
+21,aryan.trivedi21@email.com,Aryan,Trivedi,9860660032,Non-Vegetarian,M,1:00 PM - 4:00 PM,recorded
+22,zara.yadav22@email.com,Zara,Yadav,9993143841,Gluten-Free,XL,1:00 PM - 4:00 PM,recorded
+23,varun.srivastava23@email.com,Varun,Srivastava,9775290528,Vegan,XS,1:00 PM - 4:00 PM,recorded
+24,nisha.malhotra24@email.com,Nisha,Malhotra,9751042518,Non-Vegetarian,S,8:00 AM - 12:00 PM,recorded
+25,aditya.kapoor25@email.com,Aditya,Kapoor,9719195482,Vegetarian,XL,8:00 AM - 12:00 PM,recorded
