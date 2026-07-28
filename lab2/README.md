@@ -1,6 +1,8 @@
 # Lab 2 — Teach an AI Once, Automate Forever
 ### From a screen recording → two reusable Skills → a validated DynamoDB reconciliation
 
+![Surface Automation → Backend Reconciliation — a recorded UI workflow extended to enterprise data](assets/overview.png)
+
 > **The one-line story:** We recorded ourselves doing a boring data-entry task *one time*.
 > The AI watched, turned it into a reusable Skill, ran it across every row, then built a
 > *second* Skill that checks the results against a database and hands back a clean report —
