@@ -12,16 +12,39 @@
        width="900">
 </p>
 
+
+## 📺 Watch the walkthroughs
+
+> Click a thumbnail to play on YouTube. (GitHub can't embed a live YouTube player inside a README,
+> so these are clickable video thumbnails.)
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <a href="https://youtu.be/CoHWju-5ork">
+        <img src="https://img.youtube.com/vi/CoHWju-5ork/hqdefault.jpg" width="400" alt="Lab 1 walkthrough"><br/>
+        ▶️ <b>Lab 1 — Record → Skill → fill the form</b>
+      </a>
+    </td>
+    <td align="center" width="50%">
+      <a href="https://youtu.be/HH-G-5ZjqzE">
+        <img src="https://img.youtube.com/vi/HH-G-5ZjqzE/hqdefault.jpg" width="400" alt="Lab 2 walkthrough"><br/>
+        ▶️ <b>Lab 2 — Add a system of record (DynamoDB)</b>
+      </a>
+    </td>
+  </tr>
+</table>
+
 ---
 
 ## What's in this repo
 
 This repo is a hands-on demo in **two labs** that build on each other. Start with Lab 1.
 
-| Lab | Title | What you learn | Skills produced |
-|-----|-------|----------------|-----------------|
-| **[Lab 1](./lab1/README.md)** | Record → Skill → fill the form | Turn a recording into a Skill and bulk-submit every spreadsheet row into a Google Form | `event-registration-form-fill` |
-| **[Lab 2](./lab2/README.md)** | Add a system of record | Chain a second Skill that validates the responses and reconciles them against a DynamoDB table | `event-registration-form-fill` + `form-dynamodb-reconciliation` |
+| Lab | Title | What you learn | Skills produced | Video |
+|-----|-------|----------------|-----------------|-------|
+| **[Lab 1](./lab1/README.md)** | Record → Skill → fill the form | Turn a recording into a Skill and bulk-submit every spreadsheet row into a Google Form | `event-registration-form-fill` | [▶️ Watch](https://youtu.be/CoHWju-5ork) |
+| **[Lab 2](./lab2/README.md)** | Add a system of record | Chain a second Skill that validates the responses and reconciles them against a DynamoDB table | `event-registration-form-fill` + `form-dynamodb-reconciliation` | [▶️ Watch](https://youtu.be/HH-G-5ZjqzE) |
 
 ---
 
