@@ -1,0 +1,56 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AgentCoreBrowser",
+      "Effect": "Allow",
+      "Action": [
+        "bedrock-agentcore:*Browser*"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "NovaActModel",
+      "Effect": "Allow",
+      "Action": [
+        "bedrock:InvokeModel",
+        "bedrock:InvokeModelWithResponseStream"
+      ],
+      "Resource": "*"
+    },
+    {
+      "Sid": "NovaActService",
+      "Effect": "Allow",
+      "Action": ["nova-act:*"],
+      "Resource": "*"
+    },
+    {
+      "Sid": "DedupTable",
+      "Effect": "Allow",
+      "Action": ["dynamodb:PutItem", "dynamodb:DeleteItem", "dynamodb:GetItem"],
+      "Resource": "arn:aws:dynamodb:__REGION__:__ACCOUNT_ID__:table/lab4-form-fill-dedup"
+    },
+    {
+      "Sid": "GoogleServiceAccountSecretReadOnly",
+      "Effect": "Allow",
+      "Action": ["ssm:GetParameter"],
+      "Resource": "arn:aws:ssm:__REGION__:__ACCOUNT_ID__:parameter/lab4/google/*"
+    },
+    {
+      "Sid": "DecryptSecret",
+      "Effect": "Allow",
+      "Action": ["kms:Decrypt"],
+      "Resource": "*"
+    },
+    {
+      "Sid": "Logs",
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": "arn:aws:logs:__REGION__:__ACCOUNT_ID__:log-group:/aws/bedrock-agentcore/*"
+    }
+  ]
+}

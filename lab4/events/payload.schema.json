@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Lab4 form-fill job payload",
+  "description": "The variables for a Lab 4 run: which sheet to read, which form to fill, plus optional run controls. Delivered as the EventBridge target input / AgentCore Runtime payload.",
+  "type": "object",
+  "required": ["sheet", "form"],
+  "additionalProperties": false,
+  "properties": {
+    "sheet": {
+      "type": "object",
+      "required": ["id"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "description": "Google Sheet document id" },
+        "gid": { "type": "string", "description": "Tab gid (defaults to '0')" }
+      }
+    },
+    "form": {
+      "type": "object",
+      "required": ["public_id"],
+      "additionalProperties": false,
+      "properties": {
+        "public_id": {
+          "type": "string",
+          "description": "Form public id from /forms/d/e/<public_id>/viewform"
+        }
+      }
+    },
+    "region": {
+      "type": "string",
+      "description": "AWS region for the AgentCore Browser session",
+      "default": "us-east-1"
+    },
+    "mode": {
+      "type": "string",
+      "enum": ["agent", "deterministic"],
+      "description": "agent = Strands orchestrator (default); deterministic = no LLM in control flow"
+    },
+    "limit": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Optional cap on rows processed (for test runs)"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+# Lab 4 runnable stack (hybrid: deterministic + Nova Act) — pin to versions your account expects.
+bedrock-agentcore>=0.1.0            # BrowserClient + BedrockAgentCoreApp runtime harness
+bedrock-agentcore-starter-toolkit>=0.1.0   # `agentcore` CLI (configure / launch / invoke)
+nova-act>=1.0                      # Amazon Nova Act SDK — the LLM that picks the Menu Option
+strands-agents>=1.0               # Strands agent — the orchestrator entrypoint (agent.py)
+playwright>=1.45                   # deterministic fills; Nova Act exposes its Playwright page
+boto3>=1.34

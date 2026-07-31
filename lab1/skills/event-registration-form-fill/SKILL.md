@@ -3,15 +3,23 @@ name: "event-registration-form-fill"
 description: "Submit rows from the event_registration_entries Google Sheet into the Event Registration Google Form, one response per row. Use when asked to bulk-fill, populate, or submit this event registration form from the sheet."
 ---
 
-# Event Registration Form — bulk fill from sheet
+# Event Registration Form — bulk fill from sheet (browser-primary)
 
 Take each row of the **event_registration_entries** Google Sheet and record it as one
-response to the **Event Registration Form**. Do NOT click through the live form per
-row — Google Forms accepts responses over a plain HTTP POST to its `formResponse`
-endpoint, so the reliable path is: read the data once, then POST one request per row.
-Runs inside the user's authenticated Chrome session via the Claude-in-Chrome tools
-(both Sheets and Forms share the `docs.google.com` origin, so same-origin fetches
-carry the user's cookies automatically).
+response to the **Event Registration Form** by driving the live form UI in a real
+browser, one field at a time, then clicking **Submit**.
+
+**Runtime: Amazon Bedrock AgentCore Browser + Playwright.** Each row is filled inside a
+managed, isolated AgentCore Browser session (microVM per session) that Playwright
+connects to over CDP. This is deliberately the *browser* path — every submission goes
+through the rendered form, so **session replay** gives you an auditable recording of
+each side-effecting submit, and there is no cookie/session to smuggle in from a human's
+Chrome. See `scripts/fill_form_playwright.py` for the reference implementation.
+
+**Primary = browser UI. Fallback = HTTP POST.** Google Forms also accepts a response
+over a plain POST to its `formResponse` endpoint; that path is faster but bypasses the
+UI. Here it is used **only as a per-row fallback** when the UI path fails (flaky render,
+timeout) so a bulk run doesn't stall on one bad page. The UI is always tried first.
 
 ## Known IDs (this form)
 
@@ -49,50 +57,68 @@ Then submit **one row as a test**, confirm success, and only then do the rest.
 
 ## Steps
 
-1. Open a Chrome tab (Claude-in-Chrome) and navigate to the form viewform URL.
-2. Read the sheet rows. Preferred: an attached/exported copy of the sheet.
-   Note: in some sandboxes the CSV export (`export?format=csv&gid=...`) is blocked —
-   it uses a query string and cross-origin-redirects to `googleusercontent.com`, and
-   the modern Sheets grid is canvas-rendered so DOM/`get_page_text` reads return
-   nothing. If so, obtain the values another way (attached file, or the user pasting
-   them) and always sanity-check the row count against what the user expects.
-3. From a `docs.google.com` tab, POST one row at a time:
+1. **Read the sheet rows.** Prefer an attached/exported copy of the sheet, or read it
+   with the Sheets API (server-side, read-only). Note: the modern Sheets grid is
+   canvas-rendered, so scraping the page DOM returns nothing — don't read rows by
+   screen-scraping. Always sanity-check the row count against what the user expects.
 
-```js
-async function submit(FORM, MAP, r){
-  const p = new URLSearchParams();
-  if (r.email) p.append('emailAddress', r.email);
-  p.append('entry.'+MAP.first, r.first);
-  p.append('entry.'+MAP.last,  r.last);
-  p.append('entry.'+MAP.emailid, r.emailid);
-  p.append('entry.'+MAP.phone, r.phone);
-  p.append('entry.'+MAP.food,  r.food);   // checkbox: append once per selected option
-  p.append('entry.'+MAP.size,  r.size);
-  p.append('entry.'+MAP.time,  r.time);
-  p.append('fvv','1'); p.append('pageHistory','0');
-  const res = await fetch('/forms/d/e/'+FORM+'/formResponse', {
-    method:'POST', credentials:'include',
-    headers:{'Content-Type':'application/x-www-form-urlencoded'}, body:p.toString()});
-  const txt = await res.text();
-  return { ok: res.status===200 && /formResponse/.test(res.url),
-           validationError: /is a required question|errorMessage/i.test(txt) };
-}
+2. **Start an AgentCore Browser session and attach Playwright over CDP.** Credentials
+   come from the AgentCore execution role — never hard-code them. The connection
+   pattern (see the script) is:
+
+```python
+from bedrock_agentcore.tools.browser_client import BrowserClient
+from playwright.sync_api import sync_playwright
+
+client = BrowserClient(region="us-east-1"); client.start()
+ws_url, headers = client.generate_ws_headers()
+with sync_playwright() as pw:
+    browser = pw.chromium.connect_over_cdp(ws_url, headers=headers)
+    page = (browser.contexts[0] if browser.contexts else browser.new_context()).new_page()
+    # ... fill each row ...
+client.stop()
 ```
 
-   `MAP = {first:'520551456', last:'169424613', emailid:'1357075434', phone:'1176306994',
-   food:'1659502571', size:'241215804', time:'529097327'}`.
-   Submit sequentially with a ~350ms pause between rows. Treat `validationError:true`
-   (a re-rendered viewform with a "required question" message) as a failed row.
+3. **Fill the UI per row (primary path).** For each row: `page.goto(VIEWFORM_URL)`, then
+   locate each question by its **visible title** (robust to `entry.*` id changes) and
+   set its value by field type:
+   - **text** (First/Last/Email ID/Phone) → find the question's `input`/`textarea`, `fill()`.
+   - **radio** (T-Shirt Size, Attendance Time) → click `div[role=radio][aria-label="<option>"]`.
+   - **checkbox** (Preferred Food) → click `div[role=checkbox][aria-label="<option>"]` once per selected option.
+   - **email collected** → fill the `input[type=email]` / Email question.
 
-4. **Verify.** POST 200 at the `.../formResponse` URL is Google's success signal, but
-   confirm persistence too: open the form's Responses tab (owner access needed — the
-   public `/e/` ID can't reach it) and spot-check the count and a few names, or check
-   the linked response destination. Report exactly which rows were submitted and which
-   were skipped.
+   Validate every radio/checkbox value against the option strings in the mapping table
+   **before** clicking, and fail the row loudly on any mismatch rather than submitting a
+   dropped answer. Then click the **Submit** button and wait for the confirmation page
+   ("Your response has been recorded" / a `formResponse` URL). Pace ~350 ms between rows.
 
-## Fallback
+4. **POST fallback (only if the UI path fails for a row).** If a row times out or the UI
+   can't be driven (unusual field render, transient error), fall back to the
+   `formResponse` POST for *that row only*, then continue:
 
-If POSTs are rejected (unusual field types, captcha), drive the live viewform with the
-Claude-in-Chrome `form_input`/`computer` tools one field at a time, then click Submit.
-This is the slow path — only when the POST path fails.
+```python
+# entry ids: first 520551456 · last 169424613 · emailid 1357075434 · phone 1176306994
+#            food 1659502571 · size 241215804 · time 529097327   (+ fvv=1, pageHistory=0)
+# POST to https://docs.google.com/forms/d/e/<FORM_PUBLIC_ID>/formResponse
+# success = HTTP 200 at a .../formResponse URL AND body lacks "is a required question"
+```
+
+   Treat a re-rendered viewform with a "required question" message as a failed row.
+
+5. **Verify.** A confirmation page (UI) or a 200 at `.../formResponse` (fallback) is the
+   submit signal, but confirm persistence too: open the form's Responses tab (owner
+   access — the public `/e/` ID can't reach it) or the linked response sheet and
+   spot-check the count and a few names. Report exactly which rows were submitted, which
+   used the fallback, and which were skipped.
+
+## Notes on the browser path
+
+- **Audit:** keep AgentCore Browser **session recording on** so every submit is
+  replayable — the point of choosing the UI path over the raw POST.
+- **Throughput:** the UI path is sequential and slower than parallel POSTs; for very
+  large batches, size the session timeout (default 15 min, up to 8 h) accordingly.
+- **Locate by title, not by `entry.*`:** driving the UI means you match on the visible
+  question text, so the skill survives `entry.*` id changes. If the form is restructured,
+  re-check the question titles (and re-discover `entry.*` ids for the fallback from the
+  viewform's `FB_PUBLIC_LOAD_DATA_`, `data[1][1]`).
 

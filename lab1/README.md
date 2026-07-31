@@ -1,6 +1,8 @@
 # Lab 1 — Teach an AI Once, Automate Forever
 ### From a screen recording → one reusable Skill → a fully-filled Google Form
 
+> Part of a four-lab series — see the [repo overview](../README.md). Next: [Lab 2](../lab2/README.md) (reconcile), [Lab 3](../lab3/README.md) (ship on AgentCore), [Lab 4](../lab4/README.md) (add an LLM).
+
 > **The one-line story:** We recorded ourselves filling an event-registration form *one time*.
 > The AI watched, turned it into a reusable Skill, and then submitted **every row** of the
 > spreadsheet into the Google Form — as real responses — without us clicking through the UI

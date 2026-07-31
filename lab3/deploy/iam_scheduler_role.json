@@ -1,0 +1,25 @@
+{
+  "_comment": "Two docs for the EventBridge Scheduler role: trust policy + invoke permission. __ACCOUNT_ID__/__REGION__ are substituted at apply time by the deploy scripts.",
+  "trust_policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Principal": { "Service": "scheduler.amazonaws.com" },
+        "Action": "sts:AssumeRole",
+        "Condition": { "StringEquals": { "aws:SourceAccount": "__ACCOUNT_ID__" } }
+      }
+    ]
+  },
+  "invoke_policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "InvokeForwarderLambda",
+        "Effect": "Allow",
+        "Action": ["lambda:InvokeFunction"],
+        "Resource": "arn:aws:lambda:__REGION__:__ACCOUNT_ID__:function:lab3-form-fill-forwarder"
+      }
+    ]
+  }
+}

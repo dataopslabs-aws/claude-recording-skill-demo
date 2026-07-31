@@ -1,0 +1,24 @@
+{
+  "_comment": "Execution role for the forwarder Lambda: trust policy + permission to invoke the runtime. Also attach AWSLambdaBasicExecutionRole for CloudWatch Logs. __ACCOUNT_ID__/__REGION__ are substituted at apply time.",
+  "trust_policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Effect": "Allow",
+        "Principal": { "Service": "lambda.amazonaws.com" },
+        "Action": "sts:AssumeRole"
+      }
+    ]
+  },
+  "invoke_policy": {
+    "Version": "2012-10-17",
+    "Statement": [
+      {
+        "Sid": "InvokeLab3Runtime",
+        "Effect": "Allow",
+        "Action": ["bedrock-agentcore:InvokeAgentRuntime"],
+        "Resource": "arn:aws:bedrock-agentcore:__REGION__:__ACCOUNT_ID__:runtime/lab3_form_fill-*"
+      }
+    ]
+  }
+}

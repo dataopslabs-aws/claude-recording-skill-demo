@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# AgentCore starter toolkit state (per-account; do not commit)
+.bedrock_agentcore/
+.bedrock_agentcore.yaml
+
+# Node
+node_modules/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+
+# Local build/render artifacts
+*.pdf
+build.js

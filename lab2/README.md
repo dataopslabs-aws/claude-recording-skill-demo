@@ -1,6 +1,8 @@
 # Lab 2 — Teach an AI Once, Automate Forever
 ### From a screen recording → two reusable Skills → a validated DynamoDB reconciliation
 
+> Part of a four-lab series — see the [repo overview](../README.md). Prev: [Lab 1](../lab1/README.md).  Next: [Lab 3](../lab3/README.md) (ship on AgentCore), [Lab 4](../lab4/README.md) (add an LLM).
+
 ![Surface Automation → Backend Reconciliation — a recorded UI workflow extended to enterprise data](assets/overview.png)
 
 > **The one-line story:** We recorded ourselves doing a boring data-entry task *one time*.
